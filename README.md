@@ -50,7 +50,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 * Database: PostgreSQL 9.6.2
 
-* Configuration: bundle install
+## Configuration
+    cd TicketPrice
+    bundle install
+#
 
 * Database creation: rails db:create
 
