@@ -1,15 +1,17 @@
-<% @bid.each do |bidd| %>
 <h1>This is your bet </h1>
-<p>Your Offer Price: $<%= bidd.offer_price %> </p>
-<p>Lowest Price on SeatGeek: $<%= bidd.lowest_price %> </p>
-<h3> Edit </h3>
+  <ol>
+    <% @bid.each do |bidd| %>
+      <li>
+        <p>Your Offer Price: $<%= bidd.offer_price %> </p>
+        <p>Lowest Price on SeatGeek: $<%= bidd.lowest_price %> </p>
 
-<%= form_tag "/bids/#{bidd.id}", method: :patch do%>
-  <div class = "field">
-  <%= label_tag :offer_price %>
-  <%= text_field_tag :offer_price, bidd.offer_price%>
-  <div>
-
-  <%= submit_tag "Submit" %>
-  <% end %>
-<% end %>
+        <%= form_tag "/bids/#{bidd.id}", method: :patch do%>
+          <div class = "field">
+         <strong> <%= label_tag :offer_price, 'Edit offer price $' %> </strong>
+          <%= text_field_tag :offer_price, bidd.offer_price%>
+          </div>
+          <%= submit_tag "Submit" %>
+          <% end %>
+      </li>
+    <% end %>
+  </ol>
