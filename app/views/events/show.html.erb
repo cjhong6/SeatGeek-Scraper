@@ -1,0 +1,30 @@
+<p>
+Title: <%= @event["title"] %>
+<p>
+
+<p>
+Lowest Price: $<%=  @event["stats"]["lowest_price"] %>
+<p>
+
+<p>
+Address: <%= @event["venue"]["address"] + ", " + @event["venue"]["city"] + ", " + @event["venue"]["state"]%>
+<p>
+
+<p>
+Date: <%= @event["datetime_local"] %>
+<p>
+
+<h1>Create your bid</h1>
+
+<%= form_tag "/bids", method: :post do %>   
+  <div class="field">
+    <%= label_tag :offer_price %>
+    <%= text_field_tag :offer_price, ""%>
+  </div>
+  
+  <div>
+    <%= hidden_field_tag :lowest_price, @event["stats"]["lowest_price"] %>
+  </div>
+
+  <%= submit_tag "Submit" %>
+<% end %>

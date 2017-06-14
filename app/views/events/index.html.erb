@@ -1,0 +1,14 @@
+<%= form_tag('/', :method => 'get') do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Events" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<% if @responses["events"].length == 0 %>
+  <p> No result found, try other key word <p>
+<% else %> 
+  <% @responses["events"].each do |response|%>
+    <p>
+    <%= link_to response["title"], :action => 'show', :id => response["id"]%>
+    <p>
+  <% end %>
+<% end %>

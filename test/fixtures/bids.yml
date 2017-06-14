@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lowest_price: MyString
+  user_id: 1
+  offer_price: MyString
+
+two:
+  lowest_price: MyString
+  user_id: 1
+  offer_price: MyString

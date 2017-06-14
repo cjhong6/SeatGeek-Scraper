@@ -1,0 +1,2 @@
+module UserOfferHelper
+end
