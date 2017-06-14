@@ -14,4 +14,6 @@ Rails.application.routes.draw do
  get '/bids/new' => 'bid#new'
  post '/bids' => 'bid#create'
  patch '/bids/:id' => 'bid#update'
+ delete '/bids/:id' => 'bid#destroy'
+
 end

@@ -6,11 +6,12 @@
         <p>Lowest Price on SeatGeek: $<%= bidd.lowest_price %> </p>
 
         <%= form_tag "/bids/#{bidd.id}", method: :patch do%>
-          <div class = "field">
-         <strong> <%= label_tag :offer_price, 'Edit offer price $' %> </strong>
-          <%= text_field_tag :offer_price, bidd.offer_price%>
+         <div class = "field">
+           <strong> <%= label_tag :offer_price, 'Edit offer price $' %> </strong>
+            <%= text_field_tag :offer_price, bidd.offer_price%>
           </div>
           <%= submit_tag "Submit" %>
+          <%= link_to "Delete", "/bids/#{bidd.id}", method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
       </li>
     <% end %>
