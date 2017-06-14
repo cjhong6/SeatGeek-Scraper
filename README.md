@@ -17,7 +17,7 @@ The following functionality is complete:
 - [ ] Notify user if the lowest price match with their bid.
 
 The following **optional** features are implemented:
-- [ ] Show poster images
+- [ ] Show poster images.
 - [ ] Customize the UI.
 
 ## Video Walkthrough 
