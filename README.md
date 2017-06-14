@@ -1,6 +1,6 @@
 # *TicketPrice*
 
-**TicketPrice** is a scraper website using the [The SeatGeek API](https://api.seatgeek.com/2/events?client_id=MYCLIENTID).
+**TicketPrice** is a scraper website using the [The SeatGeek API](http://platform.seatgeek.com/).
 
 ## User Stories
 
