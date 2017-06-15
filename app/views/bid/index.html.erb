@@ -2,6 +2,7 @@
   <ol>
     <% @bid.each do |bidd| %>
       <li>
+        <p>Event: <%=bidd.event_name %> </p>
         <p>Your Offer Price: $<%= bidd.offer_price %> </p>
         <p>Lowest Price on SeatGeek: $<%= bidd.lowest_price %> </p>
 

@@ -20,7 +20,7 @@ class BidController < ApplicationController
 
   #create new bid with parameter pass in 
   def create
-    @bid = Bid.new(user_id: params[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price])
+    @bid = Bid.new(user_id: params[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name])
     @bid.save
     redirect_to '/bids'
   end
