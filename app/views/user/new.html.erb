@@ -1,17 +1,22 @@
 <h1>Create new User</h1>
 
-<%= form_for(@user) do |form| %>
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+<%= form_tag '/users', method: :post do %>
+  <div>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
   </div>
 
-  <div class="action">
-    <%= form.submit %>
+  <div>
+    <%= label_tag :password_confirmation %>
+    <%= password_field_tag :password_confirmation %>
+  </div>
+
+  <div>
+    <%= submit_tag "submit" %>
   </div>
 <% end %>

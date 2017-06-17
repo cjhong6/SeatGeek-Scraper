@@ -16,4 +16,7 @@ Rails.application.routes.draw do
  patch '/bids/:id' => 'bid#update'
  delete '/bids/:id' => 'bid#destroy'
 
+ get '/login' => 'sessions#new'
+ post '/login' => 'sessions#create'
+
 end

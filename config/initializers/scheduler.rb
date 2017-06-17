@@ -6,7 +6,7 @@ require 'unirest'
 scheduler = Rufus::Scheduler.singleton
 
 # Recurrent task: check for lowest_price on events that are lower than the bid
-scheduler.every '5s' do
+scheduler.every '1d' do
   bids = Bid.all
 
   bids.each do | bid |

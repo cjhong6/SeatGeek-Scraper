@@ -14,17 +14,22 @@ class UserController < ApplicationController
 
   #create new user
   def new
-    @user = User.new
     render 'new.html.erb'
   end
 
   #create new user with parameter pass in
   def create
-    @user = User.new(params.require(:user).permit(:username, :password))
+    puts "USERNAME: #{params[:username]}"
+    user = User.new(
+      username: params[:username],
+      password: params[:password]
+      )
     respond_to do |format|
-      if @user.save
+      if user.save
+        session[:user_id] = user.id
         format.html {redirect_to '/users', notice: 'User create successfully'}
       else
+        flash[:warning] = "Invalid email or password"
         format.html{ render :new }
       end
     end

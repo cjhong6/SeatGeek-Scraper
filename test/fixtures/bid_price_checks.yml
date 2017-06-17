@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lowest_price: MyString
+  string: MyString
+  bid_id: MyString
+  integer: MyString
+
+two:
+  lowest_price: MyString
+  string: MyString
+  bid_id: MyString
+  integer: MyString
