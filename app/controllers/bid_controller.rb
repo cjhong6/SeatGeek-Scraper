@@ -20,16 +20,20 @@ class BidController < ApplicationController
 
   #create new bid with parameter pass in 
   def create
-    @bid = Bid.new(user_id: params[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name])
-    @bid.save
+    bid = Bid.new(user_id: session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name])
+    if bid.save
+      flash[:success] = "New bid added"
+    else
+      flash[:danger] = "Fail adding bid"
+    end
     redirect_to '/bids'
   end
 
   #update bid offer_price
   def update
-    @bid = Bid.find_by(id: params[:id])
-    @bid.offer_price = params[:offer_price]
-    @bid.save
+    bid = Bid.find_by(id: params[:id])
+    bid.offer_price = params[:offer_price]
+    bid.save
     flash[:success] = "update bid successfully"
     redirect_to '/bids' 
   end

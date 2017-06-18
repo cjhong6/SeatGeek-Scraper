@@ -19,7 +19,7 @@ Date: <%= @event["datetime_local"] %>
 <%= form_tag "/bids", method: :post do %>   
   <div class="field">
     <%= label_tag :offer_price %>
-    <%= text_field_tag :offer_price, ""%>
+    <%= text_field_tag :offer_price %>
   </div>
   
   <div>
@@ -27,5 +27,7 @@ Date: <%= @event["datetime_local"] %>
     <%= hidden_field_tag :event_name, @event["title"]%>
   </div>
 
-  <%= submit_tag "Submit" %>
+  <div>
+    <%= submit_tag "submit" %>
+  </div>
 <% end %>
