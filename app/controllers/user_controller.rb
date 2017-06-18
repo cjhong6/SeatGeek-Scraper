@@ -22,12 +22,13 @@ class UserController < ApplicationController
     puts "USERNAME: #{params[:username]}"
     user = User.new(
       username: params[:username],
-      password: params[:password]
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
       )
     respond_to do |format|
       if user.save
         session[:user_id] = user.id
-        format.html {redirect_to '/users', notice: 'User create successfully'}
+        format.html {redirect_to '/', notice: 'User create successfully'}
       else
         flash[:warning] = "Invalid email or password"
         format.html{ render :new }

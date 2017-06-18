@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  get 'event/:id' => 'events#show'
  
  get '/users' => 'user#index'
- get '/users/new' => 'user#new'
+ get '/singup' => 'user#new'
  post '/users' => 'user#create'
  get '/users/:id' => 'user#show'
 
