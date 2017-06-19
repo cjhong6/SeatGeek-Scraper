@@ -2,8 +2,13 @@ class BidController < ApplicationController
 
   #Get all the bids
   def index
-    @bid = current_user.bids
-    render 'index.html.erb'
+    if current_user
+      @bid = current_user.bids
+      render 'index.html.erb'
+    else
+      flash[:warning] = "Please login"
+      redirect_to '/login'
+    end
   end
 
   #show deatiled info about the bid
@@ -20,13 +25,18 @@ class BidController < ApplicationController
 
   #create new bid with parameter pass in 
   def create
-    bid = Bid.new(user_id: session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name])
-    if bid.save
-      flash[:success] = "New bid added"
+    if current_user
+      bid = Bid.new(user_id: session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name])
+      if bid.save
+        flash[:success] = "New bid added"
+      else
+        flash[:danger] = "Fail adding bid"
+      end
+      redirect_to '/bids'
     else
-      flash[:danger] = "Fail adding bid"
+      flash[:warning] = "Please login"
+      redirect_to '/login'
     end
-    redirect_to '/bids'
   end
 
   #update bid offer_price
