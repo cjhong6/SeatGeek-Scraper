@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  get 'event/:id' => 'events#show'
  
  get '/users' => 'user#index'
- get '/singup' => 'user#new'
+ get '/signup' => 'user#new'
  post '/users' => 'user#create'
  get '/users/:id' => 'user#show'
 
@@ -18,5 +18,6 @@ Rails.application.routes.draw do
 
  get '/login' => 'sessions#new'
  post '/login' => 'sessions#create'
+ get '/logout' => 'sessions#destroy'
 
 end

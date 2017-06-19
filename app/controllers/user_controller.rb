@@ -31,7 +31,7 @@ class UserController < ApplicationController
         redirect_to '/'
       else
         flash[:warning] = "Invalid email or password"
-        redirect_to '/singup'
+        redirect_to '/signup'
       end
   end
 end

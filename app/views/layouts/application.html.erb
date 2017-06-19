@@ -9,9 +9,17 @@
   </head>
 
   <body>
-      <% flash.each do |name, message| %>
-        <p> <%= message %> </p>
-      <% end %>
+    <% flash.each do |name, message| %>
+      <p> <%= message %> </p>
+    <% end %>
+    
+   <% if current_user%>
+    <p> Welcome <%= current_user.username %> ! </p>
+    <a href='/logout'> Logout</a>
+   <% else %>
+    <a href='/signup'> Signup </a>
+    <a href='/login'> Login </a>
+   <% end %>
 
     <%= yield %>
   </body>
