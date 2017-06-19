@@ -40,8 +40,8 @@ class BidController < ApplicationController
 
   #delete a bid
   def destroy
-    @bid = Bid.find_by(id: params[:id])
-    @bid.destroy
+    bid = current_user.bids.find_by.find_by(id: params[:id])
+    bid.destroy
     flash[:success] = "destroy bid successfully"
     redirect_to '/bids'
   end
