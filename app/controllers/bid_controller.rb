@@ -2,7 +2,7 @@ class BidController < ApplicationController
 
   #Get all the bids
   def index
-    @bid = Bid.all
+    @bid = current_user.bids
     render 'index.html.erb'
   end
 
@@ -31,7 +31,7 @@ class BidController < ApplicationController
 
   #update bid offer_price
   def update
-    bid = Bid.find_by(id: params[:id])
+    bid = current_user.bids.find_by(id: params[:id])
     bid.offer_price = params[:offer_price]
     bid.save
     flash[:success] = "update bid successfully"
