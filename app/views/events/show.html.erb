@@ -25,6 +25,7 @@ Date: <%= @event["datetime_local"] %>
   <div>
     <%= hidden_field_tag :lowest_price, @event["stats"]["lowest_price"] %>
     <%= hidden_field_tag :event_name, @event["title"]%>
+    <%= hidden_field_tag :event_id, params[:id].to_i %>
   </div>
 
   <div>

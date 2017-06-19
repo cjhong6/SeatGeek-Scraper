@@ -26,15 +26,15 @@ class BidController < ApplicationController
   #create new bid with parameter pass in 
   def create
     if current_user
-      bid = Bid.new(user_id: session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name])
-      if bid.save
-        flash[:success] = "New bid added"
-      else
-        flash[:danger] = "Fail adding bid"
+      bid = Bid.new(user_id:  session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name], event_id: params[:event_id])
+      if session[:user_id] == current_user.id
+        bid.save
       end
+      restart_jobs
       redirect_to '/bids'
+      flash[:success] = "New bid added"
     else
-      flash[:warning] = "Please login"
+      flash[:danger] = "your not logged in"
       redirect_to '/login'
     end
   end
@@ -50,10 +50,19 @@ class BidController < ApplicationController
 
   #delete a bid
   def destroy
-    bid = current_user.bids.find_by.find_by(id: params[:id])
+    bid = current_user.bids.find_by(id: params[:id])
     bid.destroy
     flash[:success] = "destroy bid successfully"
     redirect_to '/bids'
+  end
+
+  def restart_jobs
+    puts 'Stopping rufus'
+     Rufus::Scheduler.singleton.jobs(:tag => 'main_process').each do |job|
+     Rufus::Scheduler.singleton.unschedule(job)
+    end
+    puts 'Starting rufus'
+    load "#{Rails.root}/config/initializers/scheduler.rb"
   end
 
 end
