@@ -13,6 +13,7 @@ The following functionality is complete:
 - [x] User can edit the bid on events.
 - [x] User can view all the bids they made on events.
 - [x] User can delete bids they made on events.
+- [x] Implement user authentication.
 - [x] User sees an error message when the searched event not found.
 - [x] Support background process checking lowest price on events that have bid every 10 second.
 - [ ] Notify user if the lowest price match with their bid.
