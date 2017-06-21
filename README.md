@@ -26,8 +26,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![demo](https://user-images.githubusercontent.com/15274466/27121656-0c7c0442-509d-11e7-8307-985ae5061e3e.gif)
-
+![demo](https://user-images.githubusercontent.com/15274466/27369599-80f0214e-560d-11e7-930f-b64c18700a57.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
