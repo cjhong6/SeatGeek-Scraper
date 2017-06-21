@@ -30,7 +30,7 @@ class BidController < ApplicationController
       if session[:user_id] == current_user.id
         bid.save
       end
-      restart_jobs
+      # restart_jobs
       redirect_to '/bids'
       flash[:success] = "New bid added"
     else
