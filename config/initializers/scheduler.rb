@@ -8,7 +8,7 @@ scheduler = Rufus::Scheduler.singleton
 puts "Starting rufus..."
 
 # Recurrent task: check for lowest_price on events that are lower than the bid
-scheduler.every '1d' do
+scheduler.every '5s' do
   Rails.logger.info "hello, it's #{Time.now}"
   Rails.logger.flush
   Bid.all.each do | bid |
@@ -23,7 +23,7 @@ scheduler.every '1d' do
        puts "Lowes Price: $#{@low}"
 
        #create bid price check if not exist
-       if BidPriceCheck.find_by(bid_id: bid.id).nil?
+       if !Bid.find_by_id(bid.id).bid_price_check.any?
         BidPriceCheck.create(bid_id: bid.id, lowest_price: @low)
        end
 
