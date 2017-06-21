@@ -8,7 +8,7 @@ scheduler = Rufus::Scheduler.singleton
 puts "Starting rufus..."
 
 # Recurrent task: check for lowest_price on events that are lower than the bid
-scheduler.every '5s' do
+scheduler.every '1d' do
   Rails.logger.info "hello, it's #{Time.now}"
   Rails.logger.flush
   Bid.all.each do | bid |
@@ -27,8 +27,8 @@ scheduler.every '5s' do
         BidPriceCheck.create(bid_id: bid.id, lowest_price: @low)
        end
 
-       #get bid price check lowest price 
-       bid_price_check = BidPriceCheck.where(bid_id: bid.id)[0].lowest_price
+       #get the latest lowest price from bid price check table
+       bid_price_check = BidPriceCheck.where(bid_id: bid.id).last.lowest_price
 
        #if event not expired
        if @low != 0
