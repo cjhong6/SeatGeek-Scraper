@@ -1,5 +1,6 @@
 require 'rufus-scheduler'
 require 'unirest'
+require 'twilio-ruby'
 
 # Let's use the rufus-scheduler singleton
 #
@@ -44,6 +45,7 @@ scheduler.every '5s' do
           bid.lowest_price = @low
           bid.save
           puts "Bid update"
+          send_message('4155137961', "Your offer $#{bid.offer_price} on #{bid.event_name} is now $#{@low}")
         else
           puts "Not match #{@low} > $#{bid.offer_price}"
         end
@@ -52,4 +54,18 @@ scheduler.every '5s' do
       end
     end
   end
+end
+
+def send_message(phone_number, alert_message)
+  account_sid = "AC4d7b51eb3dcab7c8352169cdb40a2bb3"
+  auth_token = "a7b52ca46178ff7834dc8a9ead766116"
+
+      @client = Twilio::REST::Client.new account_sid, auth_token
+      @twilio_number = "16504885975" 
+      message = @client.messages.create(
+        :from => @twilio_number,
+        :to => phone_number,
+        :body => alert_message
+      )
+      puts "sent message to #{message.to}"
 end
