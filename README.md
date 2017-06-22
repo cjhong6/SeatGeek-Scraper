@@ -16,7 +16,7 @@ The following functionality is complete:
 - [x] Implement user authentication.
 - [x] User sees an error message when the searched event not found.
 - [x] Support background process checking lowest price on events that have bid every 10 second.
-- [ ] Notify user if the lowest price match with their bid.
+- [x] Send SMS to user once the price match with user's bids or the event(s) is expired, and also if the ticket price has been updated.
 
 The following **optional** features are implemented:
 - [ ] Show poster images.
