@@ -31,26 +31,36 @@ scheduler.every '5s' do
        #get the latest lowest price from bid price check table
        bid_price_check = BidPriceCheck.where(bid_id: bid.id).last.lowest_price
 
-       #if event not expired
+       #event exist
        if @low != 0
          #create bid check price if new lowest_price not equal the old bid check price
          if @low != bid_price_check.to_f
           puts "$#{@low} != $#{bid_price_check}"
           BidPriceCheck.create(bid_id: bid.id, lowest_price: @low)
+          send_message('4155137961', "Your offer $#{bid.offer_price} on #{bid.event_name} is now $#{@low} w/ bid id: #{bid.id}.")
          end
 
          #update bid table
          if @low <= bid.offer_price.to_f
           puts "Match: #{@low} < $#{bid.offer_price}"
-          bid.lowest_price = @low
-          bid.save
-          puts "Bid update"
-          send_message('4155137961', "Your offer $#{bid.offer_price} on #{bid.event_name} is now $#{@low}")
+          if bid.saved_bid.nil?            
+            bid.lowest_price = @low
+            bid.saved_bid = @low
+            bid.save
+            puts "Bid update"
+            send_message('4155137961', "Match Your offer $#{bid.offer_price} on #{bid.event_name} is now $#{@low} w/ bid id: #{bid.id}!")
+          end
         else
           puts "Not match #{@low} > $#{bid.offer_price}"
         end
-      else
-        puts "Event Expired"
+      else #event expired
+        if bid.saved_bid.nil?
+          bid.saved_bid = @low
+          bid.save
+          BidPriceCheck.create(bid_id: bid.id, lowest_price: @low)
+          send_message('4155137961', "Your #{bid.event_name} is expired w/ bid id: #{bid.id}.")
+          puts "Event Expired"
+        end
       end
     end
   end
