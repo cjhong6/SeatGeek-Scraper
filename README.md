@@ -9,7 +9,7 @@ The following functionality is complete:
 - [x] User can view a list of events within 20 miles from San Francisco currently listing in SeatGeek from The SeatGeek Database.
 - [x] User can place bid on events
 - [x] User can view lowest price and event address in event details by clicking on the title.
-- [x] User can search for event.
+- [x] User can search for events coming from SeatGeek.
 - [x] User can edit the bid on events.
 - [x] User can view all the bids they made on events.
 - [x] User can delete bids they made on events.
