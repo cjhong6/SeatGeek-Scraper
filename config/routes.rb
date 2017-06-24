@@ -24,14 +24,18 @@ Rails.application.routes.draw do
   namespace :v1 do
     get '/events' => 'events#index'
     get '/events/:id' => 'events#show'
-  end
-end
-
- namespace :api do
-  namespace :v1 do
+    
     get '/users' => 'users#index'
     get '/users/:id' => 'users#show'
+    post '/users' => 'users#create'
+
+
+    get '/bids' => 'bids#index'
+    get '/bids/:id' => 'bids#show'
+    post '/bids' => 'bids#create'
+    patch 'bids/:id' => 'bids#update'
+    delete '/bids/:id' => 'bids#destroy'
   end
-end
+ end
 
 end
