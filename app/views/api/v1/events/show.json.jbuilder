@@ -1,0 +1,1 @@
+json.partial! 'event.json.jbuilder', response: @response

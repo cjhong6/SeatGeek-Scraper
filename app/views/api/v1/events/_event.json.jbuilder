@@ -1,0 +1,6 @@
+json.id response["id"]
+json.title response["title"]
+json.address response["venue"]["address"] + ", " + response["venue"]["city"] + ", " + response["venue"]["state"]
+json.lowest_price response["stats"]["lowest_price"]
+json.datetime_local response["datetime_local"]
+json.type response["type"]

@@ -3,7 +3,7 @@
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<% if @responses["events"].length == 0 %>
+<% if @responses["events"].nil? %>
   <p> No result found, try other key word <p>
 <% else %> 
   <% @responses["events"].each do |response|%>

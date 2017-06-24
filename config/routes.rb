@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  get '/' => 'events#index'
- get '/' => 'user#index'
+ # get '/' => 'user#index'
  get 'event/:id' => 'events#show'
  
  get '/users' => 'user#index'
@@ -19,5 +19,12 @@ Rails.application.routes.draw do
  get '/login' => 'sessions#new'
  post '/login' => 'sessions#create'
  get '/logout' => 'sessions#destroy'
+
+ namespace :api do
+  namespace :v1 do
+    get '/events' => 'events#index'
+    get '/events/:id' => 'events#show'
+  end
+end
 
 end
