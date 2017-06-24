@@ -27,4 +27,11 @@ Rails.application.routes.draw do
   end
 end
 
+ namespace :api do
+  namespace :v1 do
+    get '/users' => 'users#index'
+    get '/users/:id' => 'users#show'
+  end
+end
+
 end
