@@ -1,9 +1,12 @@
-class Api::V1::BidController < ApplicationController
+class Api::V1::BidsController < ApplicationController
   def index
+    @bids = Bid.all
+    puts @bids
     render 'index.json.jbuilder'
   end
 
   def show
+    @bid = Bid.find(params[:id])
     render 'show.json.jbuilder'
   end
 

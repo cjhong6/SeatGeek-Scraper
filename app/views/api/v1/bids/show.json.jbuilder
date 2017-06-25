@@ -1,0 +1,1 @@
+json.partial! 'bid.json.jbuilder', bid: @bid
