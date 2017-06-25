@@ -25,13 +25,15 @@ class BidController < ApplicationController
 
   #create new bid with parameter pass in 
   def create
-    bid = Bid.new(user_id:  session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name], event_id: params[:event_id])
-    if session[:user_id] == current_user.id
-      bid.save
-      send_message("14155137961", "your bid has been created sit back while we find you your ticket")
-      #restart_jobs
-      redirect_to '/bids'
-      flash[:success] = "New bid added"
+    if current_user
+      bid = Bid.new(user_id:  session[:user_id], lowest_price: params[:lowest_price], offer_price: params[:offer_price], event_name: params[:event_name], event_id: params[:event_id])
+      if session[:user_id] == current_user.id
+        bid.save
+        send_message("14155137961", "your bid has been created sit back while we find you your ticket")
+        #restart_jobs
+        redirect_to '/bids'
+        flash[:success] = "New bid added"
+      end
     else
       flash[:danger] = "your not logged in"
       redirect_to '/login'
