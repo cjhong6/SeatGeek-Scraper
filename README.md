@@ -19,6 +19,7 @@ The following functionality is complete:
 - [x] Send SMS to user once the price match with user's bids or the event(s) is expired, and also if the ticket price has been updated.
 
 The following **optional** features are implemented:
+- [x] RESTful API
 - [ ] Show poster images.
 - [ ] Customize the UI.
 
